@@ -1,22 +1,72 @@
-.App {
+body {
+  background-color: #212121;
+  color: #fff;
+}
+.container {
+  padding-top: 55px;
+}
+
+/* Side Bar */
+#sidebar {
+  position: absolute;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 390px;
+  left: -380px;
+  background-color: #000;
+  transition: .5s ease;
+  z-index: 1;
+}
+#sidebar.active {
+  left: 0;
+}
+#sidebar ul li {
+  list-style: none;
+}
+#sidebar ul li a:hover {
+  text-decoration: none;
+}
+#sidebar .toggle-btn {
+  position: absolute;
+  top: 10px;
+  left: 420px;
+}
+.toggle-btn span {
+  width: 40px;
+  height: 4px;
+  background-color: black;
+  display: block;
+  margin-top: 5px;
+}
+h4 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Card */
+.card {
+  border: none;
+}
+.card-header {
+  background-color: #303030;
+  color: #fff;
+  font-weight: bold;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
+.card-body {
+  background-color: #424242;
+}
+.color-white {
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* table */
+th {
+  text-transform: capitalize;
+  background-color: #303030;
+  border: 1px solid #fff !important;
+  text-align: center;
 }
-
-.App-link {
-  color: #09d3ac;
+td {
+  border: 1px solid #fff !important;
 }
