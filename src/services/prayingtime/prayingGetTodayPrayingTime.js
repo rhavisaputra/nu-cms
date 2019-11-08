@@ -62,8 +62,8 @@ class PrayingGetTodayPrayingTime extends React.Component{
             <Table th={th} td={td}/>
         )
         const spinner = (
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
             </div>
         )
         return(
