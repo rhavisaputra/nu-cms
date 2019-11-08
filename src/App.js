@@ -1,11 +1,13 @@
 import React,{Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter,Route,Link,Switch} from 'react-router-dom';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import LinkItem from './component/link-item';
 import './App.css';
 import WidgetGetTwitterFeed from './services/widget/getUserTimeline';
 import WidgetGetYoutubeFeed from './services/widget/getVideoListUrl';
 import GetTweetAndYoutubeFeed from './services/widget/getTweetAndYoutubeFeed';
+import PrayingGetThreeDayPrayingTime from './services/prayingtime/prayingGetThreeDayPrayingTime';
+import prayingGetTodayPrayingTime from './services/prayingtime/prayingGetTodayPrayingTime';
 
 class App extends Component {
   constructor(props) {
@@ -84,6 +86,15 @@ class App extends Component {
               <Route path="/nu/widgetservice/getUserTimeline" exact component={WidgetGetTwitterFeed}/>
               <Route path="/nu/widgetservice/getVideoListUrl" exact component={WidgetGetYoutubeFeed}/>
               <Route path="/nu/widgetservice/getTweetAndYoutubeFeed" exact component={GetTweetAndYoutubeFeed}/>
+
+              <Route path="/nu/prayingtimeservice/prayingGetThreeDayPrayingTime" exact component={PrayingGetThreeDayPrayingTime}/>
+              <Route path="/nu/prayingtimeservice/prayingGetTodayPrayingTime" exact component={prayingGetTodayPrayingTime}/>
+              <Route path="/nu/prayingtimeservice/prayingGetTodayPrayingTime" exact component=""/>
+              <Route path="/nu/prayingtimeservice/prayingGetPrayingTimeByDate" exact component=""/>
+              <Route path="/nu/prayingtimeservice/prayingGetCurrentMonthPrayingTime" exact component=""/>
+              <Route path="/nu/prayingtimeservice/prayingGetCurrentMonthPrayingTimeOfCity" exact component=""/>
+              <Route path="/nu/prayingtimeservice/prayingGetPrayingTimeByYYYYMM" exact component=""/>
+
               <Route component={PageNotFound}/>
             </Switch>
           </div>
