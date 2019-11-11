@@ -70,7 +70,7 @@ class CurrentMonthPrayTimeCity extends React.Component{
         )
         return(
             <div>
-                <Card title={loading ? spinner : 'Current Month Pray Time'} content={table}/>
+                <Card title={loading ? spinner : 'Current Month Pray Time Of City'} content={table}/>
             </div>
         )
     }

@@ -71,7 +71,7 @@ class PrayingGetPrayingTimeByYYYYMM extends React.Component{
         )
         return(
             <div>
-                <Card title={loading ? spinner : 'Three Day Praying Time'} content={table}/>
+                <Card title={loading ? spinner : 'Praying Time By YYYYMM'} content={table}/>
             </div>
         )
     }
