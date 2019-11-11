@@ -1,21 +1,31 @@
 import React,{Component} from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchTweetAndYoutubeFeed } from '../../services/redux/widget/action';
 import Card from '../../component/card';
 import Table from '../../component/Table';
 
 class GetTweetAndYoutubeFeed extends Component {
   constructor(props) {
     super(props)
-    this.state = {data: {youtube:{},tweeter:{}}}
+    this.state = {
+      loading: false,
+      user_id: 1
+    }
   }
   componentDidMount() {
-    fetch('http://192.168.1.247:8001/nu/widgetservice/getTweetAndYoutubeFeed')
-    .then(res => res.json())
-    .then((newData) => {
-      this.setState({data: newData.data})
+    this.handleUpdateTwitterAndYoutubeFeed();
+  }
+  handleUpdateTwitterAndYoutubeFeed = () => {
+    this.setState({loading: true});
+
+    this.props.updateTwitterAndYoutubeFeed(this.state.user_id, () => {
+      this.setState({ loading: false })
     })
-    .catch(console.log)
   }
   render() {
+    const { twitterAndYoutubeFeed } = this.props;
+    const { loading } = this.state;
     const thParent = (
       <tr>
         <th colSpan="5">Youtube</th>
@@ -44,33 +54,60 @@ class GetTweetAndYoutubeFeed extends Component {
     )
     const td = (
       <tr>
-        <td>{this.state.data.youtube.videoid}</td>
-        <td>{this.state.data.youtube.title}</td>
-        <td>{this.state.data.youtube.description}</td>
-        <td>{this.state.data.youtube.urlthumbnail}</td>
-        <td>{this.state.data.youtube.url}</td>
+        <td>{twitterAndYoutubeFeed.data.youtube.videoid}</td>
+        <td>{twitterAndYoutubeFeed.data.youtube.title}</td>
+        <td>{twitterAndYoutubeFeed.data.youtube.description}</td>
+        <td>{twitterAndYoutubeFeed.data.youtube.urlthumbnail}</td>
+        <td>{twitterAndYoutubeFeed.data.youtube.url}</td>
 
-        <td>{this.state.data.tweeter.tweetid}</td>
-        <td>{this.state.data.tweeter.username}</td>
-        <td>{this.state.data.tweeter.screenname}</td>
-        <td>{this.state.data.tweeter.createdatetime}</td>
-        <td>{this.state.data.tweeter.createdatetimelong}</td>
-        <td>{this.state.data.tweeter.text}</td>
-        <td>{this.state.data.tweeter.url}</td>
-        <td>{this.state.data.tweeter.picurl}</td>
-        <td>{this.state.data.tweeter.retweetcount}</td>
-        <td>{this.state.data.tweeter.favcount}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.tweetid}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.username}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.screenname}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.createdatetime}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.createdatetimelong}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.text}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.url}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.picurl}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.retweetcount}</td>
+        <td>{twitterAndYoutubeFeed.data.tweeter.favcount}</td>
       </tr>
     )
     const table = (
       <Table thParent={thParent} th={th} td={td}/>
     )
+    const spinner = (
+      <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+      </div>
+    )
     return(
       <div>
-        <Card title="GetTweetAndYoutubeFeed" content={table}/>
+        <Card title={loading ? spinner : 'Get Tweet And Youtube Feed'} content={table}/>
       </div>
     )
   }
 }
 
-export default GetTweetAndYoutubeFeed
+GetTweetAndYoutubeFeed.propTypes = {
+  twitterAndYoutubeFeed: PropTypes.object
+}
+GetTweetAndYoutubeFeed.defaultProps = {
+  twitterAndYoutubeFeed: {
+    data: {youtube:{},tweeter:{}}
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    twitterAndYoutubeFeed: state.widgetResponse.twitterAndYoutubeFeed
+  }
+}
+const mapDispatchToProps = dispatch => ({
+  updateTwitterAndYoutubeFeed: (param, callback) => {
+    dispatch(fetchTweetAndYoutubeFeed(param, callback))
+  }
+})
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GetTweetAndYoutubeFeed);

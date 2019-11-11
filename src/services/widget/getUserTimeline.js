@@ -1,25 +1,33 @@
 import React,{Component} from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchTwitterFeed } from '../../services/redux/widget/action';
 import Card from '../../component/card';
 import Table from '../../component/Table';
 
 class WidgetGetTwitterFeed extends Component {
   constructor(props) {
     super(props)
-    this.state = {data: []}
+    this.state = {
+      loading: false,
+      user_id: 1
+    }
   }
   componentDidMount() {
-    fetch('http://192.168.1.247:8001/nu/widgetservice/getUserTimeline',{  
-      headers:{
-        'param': 123
-      }
-    })
-    .then(res => res.json())
-    .then((newData) => {
-      this.setState({data: newData.data})
-    })
-    .catch(console.log)
+    this.handleUpdateTweetFeed();
   }
+  handleUpdateTweetFeed = () => {
+    this.setState({loading: true});
+
+    this.props.updateTweetFeed(this.state.user_id, () => {
+      this.setState({ loading: false})
+    })
+  }
+
   render() {
+
+    const { TwitterFeed } = this.props;
+    const { loading } = this.state;
     const th = (
       <tr>
         <th>userName</th>
@@ -31,7 +39,7 @@ class WidgetGetTwitterFeed extends Component {
       </tr>
     )
     const td = (
-      this.state.data.map((item,key)=>{
+      TwitterFeed.data.map((item,key)=>{
         return(
           <tr key={key}>
             <td>{item.userName}</td>
@@ -47,12 +55,41 @@ class WidgetGetTwitterFeed extends Component {
     const table = (
       <Table th={th} td={td}/>
     )
+    const spinner = (
+      <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+      </div>
+    )
     return(
       <div>
-        <Card title="WidgetGetTwitterFeed" content={table}/>
+        <Card title={loading ? spinner : 'Widget Get Twitter Feed'} content={table}/>
       </div>
     )
   }
 }
 
-export default WidgetGetTwitterFeed
+WidgetGetTwitterFeed.propTypes = {
+  TwitterFeed: PropTypes.object
+}
+
+WidgetGetTwitterFeed.defaultProps = {
+  TwitterFeed: {
+    data: []
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    TwitterFeed: state.widgetResponse.tweetFeed
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  updateTweetFeed: (param, callback) => {
+    dispatch(fetchTwitterFeed(param, callback))
+  }
+})
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WidgetGetTwitterFeed);
