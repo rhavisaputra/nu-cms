@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import * as response from './prayingtime/threedayReducer';
 import * as widgetResponse from './widget/widgetReducer';
+import * as response from './prayingtime/threedayReducer';
+import * as forum from './forum/forumReducer';
 
 export const rootReducer = combineReducers({
+    widgetResponse: widgetResponse.reducer,
     dataResponse: response.reducer,
-    widgetResponse: widgetResponse.reducer
+    dataForum : forum.reducer
 })
 
 export default rootReducer;
