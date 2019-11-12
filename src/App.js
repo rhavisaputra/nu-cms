@@ -15,15 +15,15 @@ import PrayingGetCurrentMonthPrayingTime from './services/prayingtime/prayingGet
 import PrayingGetCurrentMonthPrayingTimeOfCity from './services/prayingtime/prayingGetCurrentMonthPrayingTimeOfCity';
 import PrayingGetPrayingTimeByYYYYMM from './services/prayingtime/prayingGetPrayingTimeByYYYYMM';
 // servicequran
-// import QuranGetBookmark from './services/servicequran/quranGetBookmark';
-// import QuranSetBookmark from './services/servicequran/quranSetBookmark';
-// import ListSurah from './services/servicequran/listSurah';
-// import QuranSearchSurahByName from './services/servicequran/quranSearchSurahByName';
+import QuranGetBookmark from './services/servicequran/quranGetBookmark';
+import QuranSetBookmark from './services/servicequran/quranSetBookmark';
+import ListSurah from './services/servicequran/listSurah';
+import QuranSearchSurahByName from './services/servicequran/quranSearchSurahByName';
 // import QuranViewSurahAll from './services/servicequran/quranViewSurahAll';
 // import QuranViewSurahByName from './services/servicequran/quranViewSurahByName';
 // import QuranViewSurahByNumber from './services/servicequran/quranViewSurahByNumber';
-// import SurahListByJuzAll from './services/servicequran/surahListByJuzAll';
-// import SurahListByJuzNumber from './services/servicequran/surahListByJuzNumber';
+import SurahListByJuzAll from './services/servicequran/surahListByJuzAll';
+import SurahListByJuzNumber from './services/servicequran/surahListByJuzNumber';
 // forum
 import DisplayAllForumByUser from './services/forum/displayAllForumByUser';
 import CreateForum from './services/forum/createForum';
@@ -129,15 +129,15 @@ class App extends Component {
               <Route path="/nu/prayingtimeservice/prayingGetCurrentMonthPrayingTimeOfCity" exact component={PrayingGetCurrentMonthPrayingTimeOfCity}/>
               <Route path="/nu/prayingtimeservice/prayingGetPrayingTimeByYYYYMM" exact component={PrayingGetPrayingTimeByYYYYMM}/>
               {/* servicequran */}
-              {/* <Route path="/nu/servicequran/quranGetBookmark" exact component={QuranGetBookmark}/>
+              <Route path="/nu/servicequran/quranGetBookmark" exact component={QuranGetBookmark}/>
               <Route path="/nu/servicequran/quranSetBookmark" exact component={QuranSetBookmark}/>
               <Route path="/nu/servicequran/listSurah" exact component={ListSurah}/>
               <Route path="/nu/servicequran/quranSearchSurahByName" exact component={QuranSearchSurahByName}/>
-              <Route path="/nu/servicequran/quranViewSurahAll" exact component={QuranViewSurahAll}/>
-              <Route path="/nu/servicequran/quranViewSurahByName" exact component={QuranViewSurahByName}/>
-              <Route path="/nu/servicequran/quranViewSurahByNumber" exact component={QuranViewSurahByNumber}/>
+              {/* <Route path="/nu/servicequran/quranViewSurahAll" exact component={QuranViewSurahAll}/> */}
+              {/* <Route path="/nu/servicequran/quranViewSurahByName" exact component={QuranViewSurahByName}/> */}
+              {/* <Route path="/nu/servicequran/quranViewSurahByNumber" exact component={QuranViewSurahByNumber}/> */}
               <Route path="/nu/servicequran/surahListByJuzAll" exact component={SurahListByJuzAll}/>
-              <Route path="/nu/servicequran/surahListByJuzNumber" exact component={SurahListByJuzNumber}/> */}
+              <Route path="/nu/servicequran/surahListByJuzNumber" exact component={SurahListByJuzNumber}/>
               {/* forum */}
               <Route path="/nu/forum/displayAllForumByUser"exact component={DisplayAllForumByUser} />
               <Route path="/nu/forum/createForum" exact component={CreateForum}/>
