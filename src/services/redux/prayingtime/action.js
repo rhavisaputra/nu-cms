@@ -11,7 +11,7 @@ export const fetchPrayingTimeThreeDay = (param, dataBody, callback) => ({
         url: HOST+'/nu/prayingtimeservice/prayingGetThreeDayPrayingTime',
         method: 'POST',
         headers: {
-            'param': param,
+            'user_id': param,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(dataBody)
@@ -27,7 +27,7 @@ export const fetchTodayPrayTime = (param, dataBody, callback) => ({
         url: HOST+'/nu/prayingtimeservice/prayingGetTodayPrayingTime',
         method: 'POST',
         headers: {
-            'param': param,
+            'user_id': param,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(dataBody)
@@ -43,7 +43,7 @@ export const fetchPrayTimeByDate = (param, databody, callback) => ({
         url: HOST+'/nu/prayingtimeservice/prayingGetPrayingTimeByDate',
         method: 'POST',
         headers: {
-            'param': param,
+            'user_id': param,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(databody)
@@ -59,7 +59,7 @@ export const fetchCurrentMonthPrayTime = (param, callback) => ({
         url: HOST+'/nu/prayingtimeservice/prayingGetCurrentMonthPrayingTime',
         method: 'POST',
         headers: {
-            'param': param,
+            'user_id': param,
         }
     }
 })
@@ -73,7 +73,7 @@ export const fetchCurrentMonthPrayTimeCity = (param, dataBody, callback) =>({
         url: HOST+'/nu/prayingtimeservice/prayingGetCurrentMonthPrayingTimeOfCity',
         method: 'POST',
         headers: {
-            'param': param,
+            'user_id': param,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(dataBody)
@@ -89,7 +89,7 @@ export const fetchPraytimeByYYYYMM = (param, dataBody, callback) => ({
         url: HOST+'/nu/prayingtimeservice/prayingGetPrayingTimeByYYYYMM',
         method: 'POST',
         headers: {
-            'param': param,
+            'user_id': param,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(dataBody)

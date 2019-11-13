@@ -10,7 +10,7 @@ export const fetchQuranGetBookmark = (param, callback) => ({
     url: HOST+"/nu/servicequran/quranGetBookmark",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
     }
   }
 })
@@ -23,7 +23,7 @@ export const fetchQuranSetBookmark = (param, dataBody, callback) => ({
     url: HOST+"/nu/servicequran/quranSetBookmark",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(dataBody)
@@ -38,7 +38,7 @@ export const fetchListSurah = (param, callback) => ({
     url: HOST+"/nu/servicequran/listSurah",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
     }
   }
 })
@@ -51,7 +51,7 @@ export const fetchQuranSearchSurahByName = (param, dataBody, callback) => ({
     url: HOST+"/nu/servicequran/quranSearchSurahByName",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(dataBody)
@@ -66,7 +66,7 @@ export const fetchQuranViewSurahAll = (param, dataBody, callback) => ({
     url: HOST+"/nu/servicequran/quranViewSurahAll",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(dataBody)
@@ -81,7 +81,7 @@ export const fetchQuranViewSurahByName = (param, dataBody, callback) => ({
     url: HOST+"/nu/servicequran/quranViewSurahByName",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(dataBody)
@@ -96,7 +96,7 @@ export const fetchQuranViewSurahByNumber = (param, dataBody, callback) => ({
     url: HOST+"/nu/servicequran/quranViewSurahByNumber",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(dataBody)
@@ -111,7 +111,7 @@ export const fetchSurahListByJuzAll	 = (param, callback) => ({
     url: HOST+"/nu/servicequran/surahListByJuzAll",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
     }
   }
 })
@@ -124,7 +124,7 @@ export const fetchSurahListByJuzNumber = (param, dataBody, callback) => ({
     url: HOST+"/nu/servicequran/surahListByJuzNumber",
     method: 'POST',
     headers: {
-      'param': param,
+      'user_id': param,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(dataBody)
