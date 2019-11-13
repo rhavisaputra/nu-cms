@@ -32,11 +32,9 @@ class QuranViewSurahAll extends React.Component {
 
     const { QuranViewSurahAll } = this.props;
     const { loading } = this.state;
-    const thParent = (
+    const thParent = (title) => (
       <tr>
-        <th colSpan="5">indonesian</th>
-        <th colSpan="5">arabic</th>
-        <th colSpan="5">english</th>
+        <th colSpan="5">{title}</th>
       </tr>
     )
     const th = (
@@ -46,57 +44,47 @@ class QuranViewSurahAll extends React.Component {
         <th>surah_id</th>
         <th>verse_id</th>
         <th>ayah_text</th>
-
-        <th>id</th>
-        <th>database</th>
-        <th>surah_id</th>
-        <th>verse_id</th>
-        <th>ayah_text</th>
-
-        <th>id</th>
-        <th>database</th>
-        <th>surah_id</th>
-        <th>verse_id</th>
-        <th>ayah_text</th>
       </tr>
     )
-    const td = (
-      QuranViewSurahAll.data.surah.indonesian.map((item,key) => {
-        return(
-          <tr key={key}>
-            <th>{item.id}</th>
-            <th>{item.database_id}</th>
-            <th>{item.surah_id}</th>
-            <th>{item.verse_id}</th>
-            <th>{item.ayah_text}</th>
-          </tr>
-        )
-      }),
-      QuranViewSurahAll.data.surah.arabic.map((item,key) => {
-        return(
-          <tr key={key}>
-            <th>{item.id}</th>
-            <th>{item.database_id}</th>
-            <th>{item.surah_id}</th>
-            <th>{item.verse_id}</th>
-            <th>{item.ayah_text}</th>
-          </tr>
-        )
-      }),
-      QuranViewSurahAll.data.surah.english.map((item,key) => {
-        return(
-          <tr key={key}>
-            <th>{item.id}</th>
-            <th>{item.database_id}</th>
-            <th>{item.surah_id}</th>
-            <th>{item.verse_id}</th>
-            <th>{item.ayah_text}</th>
-          </tr>
-        )
-      })
+    const tdIndonesian = (
+      QuranViewSurahAll.data.surah.indonesian.map((item,key) => (
+        <tr key={key}>
+            <td>{item.id}</td>
+            <td>{item.database_id}</td>
+            <td>{item.surah_id}</td>
+            <td>{item.verse_id}</td>
+            <td>{item.ayah_text}</td>
+        </tr>
+      ))
+    )
+    const tdEnglish = (
+      QuranViewSurahAll.data.surah.english.map((item,key) => (
+        <tr key={key}>
+            <td>{item.id}</td>
+            <td>{item.database_id}</td>
+            <td>{item.surah_id}</td>
+            <td>{item.verse_id}</td>
+            <td>{item.ayah_text}</td>
+        </tr>
+      ))
+    )
+    const tdArabic = (
+      QuranViewSurahAll.data.surah.arabic.map((item,key) => (
+        <tr key={key}>
+            <td>{item.id}</td>
+            <td>{item.database_id}</td>
+            <td>{item.surah_id}</td>
+            <td>{item.verse_id}</td>
+            <td>{item.ayah_text}</td>
+        </tr>
+      ))
     )
     const table = (
-      <Table thParent={thParent} th={th} td={td}/>
+      <React.Fragment>
+      <Table thParent={thParent("indonesian")} th={th} td={tdIndonesian}/>
+      <Table thParent={thParent("english")} th={th} td={tdEnglish}/>
+      <Table thParent={thParent("arabic")} th={th} td={tdArabic}/>
+      </React.Fragment>
     )
     const spinner = (
       <div className="spinner-border" role="status">
@@ -113,11 +101,22 @@ class QuranViewSurahAll extends React.Component {
 
 QuranViewSurahAll.propTypes = {
   QuranViewSurahAll: PropTypes.object
+  // QuranViewSurahAll: {
+  //   data : {
+  //     surah: PropTypes.object
+  //   }
+  // }
 }
 
 QuranViewSurahAll.defaultProps = {
   QuranViewSurahAll: {
-    data: {surah:{indonesian:[{}],arabic:[{}],english:[{}]}}
+    data: {
+      surah: {
+        indonesian:[{}],
+        arabic:[{}],
+        english:[{}]
+      }
+    }
   }
 }
 

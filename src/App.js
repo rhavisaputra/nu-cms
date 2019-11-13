@@ -19,9 +19,9 @@ import QuranGetBookmark from './services/servicequran/quranGetBookmark';
 import QuranSetBookmark from './services/servicequran/quranSetBookmark';
 import ListSurah from './services/servicequran/listSurah';
 import QuranSearchSurahByName from './services/servicequran/quranSearchSurahByName';
-// import QuranViewSurahAll from './services/servicequran/quranViewSurahAll';
-// import QuranViewSurahByName from './services/servicequran/quranViewSurahByName';
-// import QuranViewSurahByNumber from './services/servicequran/quranViewSurahByNumber';
+import QuranViewSurahAll from './services/servicequran/quranViewSurahAll';
+import QuranViewSurahByName from './services/servicequran/quranViewSurahByName';
+import QuranViewSurahByNumber from './services/servicequran/quranViewSurahByNumber';
 import SurahListByJuzAll from './services/servicequran/surahListByJuzAll';
 import SurahListByJuzNumber from './services/servicequran/surahListByJuzNumber';
 // forum
@@ -133,9 +133,9 @@ class App extends Component {
               <Route path="/nu/servicequran/quranSetBookmark" exact component={QuranSetBookmark}/>
               <Route path="/nu/servicequran/listSurah" exact component={ListSurah}/>
               <Route path="/nu/servicequran/quranSearchSurahByName" exact component={QuranSearchSurahByName}/>
-              {/* <Route path="/nu/servicequran/quranViewSurahAll" exact component={QuranViewSurahAll}/> */}
-              {/* <Route path="/nu/servicequran/quranViewSurahByName" exact component={QuranViewSurahByName}/> */}
-              {/* <Route path="/nu/servicequran/quranViewSurahByNumber" exact component={QuranViewSurahByNumber}/> */}
+              <Route path="/nu/servicequran/quranViewSurahAll" exact component={QuranViewSurahAll}/>
+              <Route path="/nu/servicequran/quranViewSurahByName" exact component={QuranViewSurahByName}/>
+              <Route path="/nu/servicequran/quranViewSurahByNumber" exact component={QuranViewSurahByNumber}/>
               <Route path="/nu/servicequran/surahListByJuzAll" exact component={SurahListByJuzAll}/>
               <Route path="/nu/servicequran/surahListByJuzNumber" exact component={SurahListByJuzNumber}/>
               {/* forum */}
