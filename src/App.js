@@ -96,6 +96,7 @@ class App extends Component {
   }
   slide() {
     document.getElementById('sidebar').classList.toggle('active')
+    document.getElementById('card').classList.toggle('slide-card')
   }
   render() {
     return(

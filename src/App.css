@@ -44,6 +44,10 @@ h4 {
 }
 
 /* Card */
+#card {
+  left: 0;
+  transition: .5s ease;
+}
 .card {
   border: none;
 }
@@ -59,6 +63,9 @@ h4 {
 .color-white {
   color: #fff;
 }
+#card.slide-card {
+  left: 390px;
+}
 
 /* table */
 th {
@@ -69,4 +76,9 @@ th {
 }
 td {
   border: 1px solid #fff !important;
+}
+
+/* link */
+.link:hover {
+  color: white;
 }

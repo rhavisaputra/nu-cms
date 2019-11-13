@@ -9,7 +9,7 @@ function LinkItem(props) {
           return(
             <li key={key}>
               <div className="sub-menu">
-                <Link to={item.path}>{item.api}</Link>
+                <Link to={item.path} className="link">{item.api}</Link>
               </div>
             </li>
           )
