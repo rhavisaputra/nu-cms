@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchSearchVideoCourseByTitle } from '../../services/redux/videocourse/action';
+import { fetchVideoCourse } from '../redux/videocourse/action';
 import Card from '../../component/card';
 import Table from '../../component/Table';
 
-class SearchVideoCourseByTitle extends Component {
+class VideoCourse extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,22 +14,18 @@ class SearchVideoCourseByTitle extends Component {
     }
   }
   componentDidMount() {
-    this.handleUpdateSearchVideoCourseByTitle();
+    this.handleUpdateVideoCourse();
   }
-  handleUpdateSearchVideoCourseByTitle = () => {
+  handleUpdateVideoCourse = () => {
     this.setState({loading: true});
-    
-    var bodyData = {
-      "search_keyword": "madi"
-    }
 
-    this.props.updateSearchVideoCourseByTitle(this.state.user_id, bodyData, () => {
+    this.props.updateVideoCourse(this.state.user_id, () => {
       this.setState({loading: false})
     })
   }
 
   render() {
-    const { SearchVideoCourseByTitle } = this.props;
+    const { VideoCourse } = this.props;
     const { loading } = this.state;
     const th = (
       <tr>
@@ -42,7 +38,7 @@ class SearchVideoCourseByTitle extends Component {
       </tr>
     )
     const td = (
-      SearchVideoCourseByTitle.data.map((item,key)=>{
+      VideoCourse.data.map((item,key)=>{
         return(
           <tr key={key}>
             <td>{item.video_id}</td>
@@ -65,33 +61,33 @@ class SearchVideoCourseByTitle extends Component {
     )
     return(
       <div>
-        <Card title={loading ? spinner : 'Search Video Course By Title'} content={table}/>
+        <Card title={loading ? spinner : 'Video Course'} content={table}/>
       </div>
     )
   }
 }
-SearchVideoCourseByTitle.propsTypes = {
-  SearchVideoCourseByTitle: PropTypes.object
+VideoCourse.propsTypes = {
+  VideoCourse: PropTypes.object
 }
 
-SearchVideoCourseByTitle.defaultProps = {
-  SearchVideoCourseByTitle: {
+VideoCourse.defaultProps = {
+  VideoCourse: {
     data: [{}]
   }
 }
 
 const mapStateToProps = state => {
   return {
-    SearchVideoCourseByTitle: state.dataVideoCourse.searchVideoCourseByTitle
+    VideoCourse: state.dataVideoCourse.videoCourse
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateSearchVideoCourseByTitle: (param, dataBody, callback) => {
-    dispatch(fetchSearchVideoCourseByTitle(param, dataBody, callback))
+  updateVideoCourse: (param, callback) => {
+    dispatch(fetchVideoCourse(param, callback))
   }
 })
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchVideoCourseByTitle);
+)(VideoCourse);

@@ -32,8 +32,8 @@ import EditComment from './services/forum/editComment';
 import CloseForum from './services/forum/closeForum';
 import DisplayForumDetail from './services/forum/displayForumDetail';
 // videocourse
-// import VideoCourse from './services/videocourse/videoCourseSepertiUdemy';
-// import SearchVideoCourseByapi from './services/videocourse/searchVideoCourseByap';
+import VideoCourse from './services/videocourse/videoCourse';
+import SearchVideoCourseByTitle from './services/videocourse/searchVideoCourseByTitle';
 // user
 // import RegisterUser from './services/user/registerUser';
 // import UpdateProfile from './services/user/updateProfile';
@@ -81,7 +81,7 @@ class App extends Component {
       ],
       videocourse: [
         {api: "videoCourse",path: "/nu/videocourse/videoCourseSepertiUdemy"},
-        {api: "searchVideoCourseByapi",path: "/nu/videocourse/searchVideoCourseByapi"}
+        {api: "searchVideoCourseByTitle",path: "/nu/videocourse/searchVideoCourseByTitle"}
       ],
       user: [
         {api: "registerUser",path: "/nu/user/registerUser"},
@@ -146,8 +146,8 @@ class App extends Component {
               <Route path="/nu/forum/closeForum" exact component={CloseForum}/>
               <Route path="/nu/forum/displayForumDetail" exact component={DisplayForumDetail}/>
               {/* videocourse */}
-              {/* <Route path="/nu/videocourse/videoCourseSepertiUdemy" exact component={VideoCourse}/>
-              <Route path="/nu/videocourse/searchVideoCourseByapi" exact component={SearchVideoCourseByapi}/> */}
+              <Route path="/nu/videocourse/videoCourseSepertiUdemy" exact component={VideoCourse}/>
+              <Route path="/nu/videocourse/searchVideoCourseByTitle" exact component={SearchVideoCourseByTitle}/>
               {/* user */}
               {/* <Route path="/nu/user/registerUser" exact component={RegisterUser}/>
               <Route path="/nu/user/updateProfile" exact component={UpdateProfile}/>

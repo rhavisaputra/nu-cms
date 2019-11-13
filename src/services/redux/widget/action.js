@@ -10,7 +10,7 @@ export const fetchTwitterFeed = (param, callback) => ({
     url: HOST+"/nu/widgetservice/getUserTimeline",
     method: 'GET',
     headers: {
-      'param': param
+      'user_id': param
     }
   }
 })
@@ -23,7 +23,7 @@ export const fetchYoutubeFeed = (param, callback) => ({
     url: HOST+"/nu/widgetservice/getVideoListUrl",
     method: 'GET',
     headers: {
-      'param': param
+      'user_id': param
     }
   }
 })
@@ -36,7 +36,7 @@ export const fetchTweetAndYoutubeFeed = (param, callback) => ({
     url: HOST+"/nu/widgetservice/getTweetAndYoutubeFeed",
     method: 'GET',
     headers: {
-      'param': param
+      'user_id': param
     }
   }
 })
